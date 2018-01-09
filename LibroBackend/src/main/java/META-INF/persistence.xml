@@ -6,6 +6,7 @@
 		<class>com.calarcasi.store.entities.Order</class>
 		<class>com.calarcasi.store.entities.Product</class>
 		<class>com.calarcasi.store.entities.Usuario</class>
+		<class>com.calarcasi.store.entities.Categoria</class>
 		
 		
 		

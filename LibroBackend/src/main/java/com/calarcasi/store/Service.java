@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.calarcasi.store.entities.Categoria;
 import com.calarcasi.store.entities.Order;
 import com.calarcasi.store.entities.Product;
 import com.calarcasi.store.entities.Usuario;
+import com.calarcasi.store.pojos.CategoriaPojo;
 import com.calarcasi.store.pojos.OrderPojo;
 import com.calarcasi.store.pojos.ProductPojo;
 import com.calarcasi.store.pojos.UsuarioPojo;
@@ -84,6 +86,12 @@ public class Service {
 	/*
 	 * INICIO gestion productos
 	 */
+	@ApiMethod(name = "consultarCategorias", path = "categorias", httpMethod = HttpMethod.GET)
+	public List<Categoria> consultarCategorias() throws UnauthorizedException {
+		return new CategoriaPojo().findWithNamedQuery(Categoria.AllCategorias);
+	}
+	
+	
 	
 	@ApiMethod(name = "consultarProducts", path = "products", httpMethod = HttpMethod.GET)
 	public List<Product> consultarProducts() throws UnauthorizedException {
