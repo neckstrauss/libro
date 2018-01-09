@@ -1,6 +1,6 @@
 /* Estos son los estilos globales, divididos en modulos sass */
 
-
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "sass/global"; // este siempte primero
 @import "sass/variables";
 @import "sass/card"; // tarjetas de bootsrap
