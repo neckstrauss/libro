@@ -14,9 +14,10 @@ export class RestDataSource {
   constructor(private http: HttpClient/*,
     @Inject(REST_URL) private url: string*/) {}
   
-  setUrl(url: string)
+  setUrl(url: string): RestDataSource
   {
     this.url = url;
+    return this;
   }
   
   getData(): Observable<any> {

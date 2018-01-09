@@ -4,18 +4,18 @@ import {Observable} from "rxjs/Observable";
 import {RestDataSource} from "../dataSources/rest.datasource";
 
 
-@Injectable()
+//@Injectable()
 export class Model<T> {
 
   private dataSet: T[] = new Array<any>();
   private locator = (p: any, id: number) => p.id == id;
   
 
-  constructor(private dataSource: RestDataSource) {
+  constructor(private dataSource: RestDataSource, private url: string) {
   }
   
   loadDataSet(): void {
-    this.dataSource.getData().subscribe(event => {
+    this.dataSource.setUrl(this.url).getData().subscribe(event => {
       if (event.type === HttpEventType.Response) {
         console.log("response received... getData()", event.body);
         this.dataSet = event.body.items;
@@ -33,14 +33,14 @@ export class Model<T> {
 
   save(data: any) {
     if (data.id == 0 || data.id == null) {
-      this.dataSource.saveData(data).subscribe(event => {
+      this.dataSource.setUrl(this.url).saveData(data).subscribe(event => {
         if (event.type === HttpEventType.Response) {
           console.log("response received... save()", event.body);
           this.dataSet.push(event.body);
         }
       });
     } else {
-      this.dataSource.updateData(data).subscribe(event => {
+      this.dataSource.setUrl(this.url).updateData(data).subscribe(event => {
         if (event.type === HttpEventType.Response) {
           console.log("response received... update()", event.body);
           let index = this.dataSet.findIndex(item => this.locator(item, event.body.id));
@@ -51,7 +51,7 @@ export class Model<T> {
   }
 
   delete(id: number) {
-    this.dataSource.deleteData(id).subscribe(() => {
+    this.dataSource.setUrl(this.url).deleteData(id).subscribe(() => {
       let index = this.dataSet.findIndex(p => this.locator(p, id));
       if (index > -1) {
         this.dataSet.splice(index, 1);
