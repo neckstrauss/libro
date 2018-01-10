@@ -75,9 +75,9 @@ thead>tr>th {
 .actualizar {
     position: absolute;
     top: .65rem;
-    right: 3.5rem;
+    right: 4rem;
    // left: calc(50% - 56px);
-    cursor: pointer;
+//     cursor: pointer;
 }
 
 .nuevo {
@@ -86,57 +86,60 @@ thead>tr>th {
     right: 1.5rem;
    // left: calc(50% - 56px);
    
-    cursor: pointer;
+    //cursor: pointer;
 }
 // 
-// .updateIcon {
-//     cursor: pointer;
-//     border-radius: .5rem;
-//     padding: .15rem;
-//     color: rgba(0, 0, 0, .54);
-//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-//     font-size: 2rem;
-// }
+.updateIcon  {
+           cursor: pointer;
+           border-radius: .5rem;
+           padding: .25rem;
+           font-size: 1.7rem;
+           color: #fff;
+           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .updateIcon:hover {
+            color: #ededed;
+        }
 // 
 // // animacion de el boton de busqueda
-// .input-group {
-//     display: flex;
-//     height: 36px;
-//     width: 100%;
-//     overflow: hidden;
-//     padding: 0;
-//     cursor: pointer;
-//     border-radius: 2px;
-//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-//     position: absolute;
-//     top: .25rem;
-//     right: 4rem;
-//     width: 25%;
-// }
+	.input-group {
+	    display: flex;
+	    height: 36px;
+	    overflow: hidden;
+	    padding: 0;
+	  //  cursor: pointer;
+	    border-radius: 2px;
+	    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	    position: absolute;
+	    top: .5rem;
+	    right: 7rem;
+	    width: 40%;
+	}
 // 
-// .inactive:active,
-// .inactive:hover {
-//     background-color: rgba(100, 100, 100, 0.1);
-// }
+.inactive:active,
+.inactive:hover {
+    background-color: rgba(100, 100, 100, 0.1);
+}
+
+.input-group .pull-right:active,
+.input-group .pull-right:hover {
+    background-color: transparent;
+}
+
+.input-group.centered {
+    margin: 0 auto;
+}
 // 
-// .input-group .pull-right:active,
-// .input-group .pull-right:hover {
-//     background-color: transparent;
-// }
-// 
-// .input-group.centered {
-//     margin: 0 auto;
-// }
-// 
-// .input-group .input-group-addon {
-//     justify-content: center;
-//     width: 36px;
-//     background: transparent;
-//     border: none;
-//     display: flex;
-//     text-align: center;
-//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-// }
+.input-group .input-group-addon {
+    justify-content: center;
+    width: 36px;
+    background: transparent;
+    border: none;
+    display: flex;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 // 
 // .input-group .input-group-addon i {
 //     height: 24px;
@@ -158,22 +161,22 @@ thead>tr>th {
     border-bottom: 2px solid #242424;
 }
 // 
-// // .search .form-control::-webkit-input-placeholder {
-// //   color: red;
-// // }
-// .inactive {
-//     width: 36px;
-//     border-radius: 18px;
-//     background: transparent;
-//     box-shadow: none;
+// .search .form-control::-webkit-input-placeholder {
+//   color: red;
 // }
+.inactive {
+    width: 36px;
+    border-radius: 18px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.inactive .input-group-addon:not(:first-child) {
+    opacity: 0;
+}
 // 
-// .inactive .input-group-addon:not(:first-child) {
-//     opacity: 0;
-// }
-// 
-// .row {
-//     margin-top: 1em;
-// }
+.row {
+    margin-top: 1em;
+}
 // 
 // // animacin del boton de busqueda

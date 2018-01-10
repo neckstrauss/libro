@@ -73,6 +73,11 @@ export class TableComponent {
     this.observer.next(new SharedState(MODES.CREATE));
   }
 
+  actualizarProductos()
+  {
+    this.model.loadDataSet();  
+  }
+  
 
 
 

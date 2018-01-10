@@ -17,45 +17,29 @@
 				<h3>Productos</h3>
 
 				<div class="actualizar">
-					<i class="material-icons updateIcon" [title]="'Actualizar Datos'">cached</i>
+					<i class="material-icons azul	 updateIcon"
+						[title]="'Actualizar Datos'" (click)="actualizarProductos()">cached</i>
 				</div>
-				
+
 				<div class="nuevo">
-					<i class="material-icons updateIcon" [title]="'Nuevo Producto'">note_add</i>
-				</div>
-				
-				<div class="input-group search pull-right">
-					<span class="input-group-addon"> 
-						<i class="material-icons">search</i>
-					</span> 
-					<input type="text" class="form-control" placeholder="Buscar"
-						[(ngModel)]="filter">					
-					<span class="input-group-addon"> <i class="material-icons">clear</i>
-					</span>
-				</div>
-				
-				<div class="input-group search pull-right">
-					<span class="input-group-addon"> 
-						<i class="material-icons">search</i>
-					</span> 
-					
-					<input type="text"
-						class="form-control" placeholder="Buscar2" [(ngModel)]="filter2">
-					<span class="input-group-addon"> <i class="material-icons">clear</i>
-					</span>
+					<i class="material-icons verde updateIcon"
+						[title]="'Nuevo Producto'" data-toggle="modal"
+						data-target="#exampleModal" (click)="createProduct()">note_add</i>
 				</div>
 
+				<div class="input-group search pull-right">
 
-				<!-- <div class="dropdown orden">
-					<button class="btn" type="button" id="dropdownMenuButton"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="material-icons">sort</i>
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" *ngFor="let orden of ordenacion.ordenes"
-							(click)="ordenar(orden)">{{orden.nombre}}</a>
-					</div>
-				</div> -->
+					<span class="input-group-addon">
+					 	<i class="material-icons">search</i>
+					</span> 
+					<input type="text" class="form-control" placeholder="Filtro 1" [(ngModel)]="filter">
+				
+					<span class="input-group-addon"> 
+						<i class="material-icons">search</i>
+					</span>					
+					<input type="text" class="form-control" placeholder="Filtro 2" [(ngModel)]="filter2">
+				</div>				
+
 			</div>
 
 			<div class="card-content">
@@ -92,7 +76,8 @@
 								currency:"USD":"symbol" }}</td>
 							<td class="text-center"><i class="material-icons verde"
 								aria-hidden="true " data-placement="top " title="Editar"
-								data-toggle="modal" data-target="#exampleModal" (click)="editProduct(item.id)">edit</i> <i
+								data-toggle="modal" data-target="#exampleModal"
+								(click)="editProduct(item.id)">edit</i> <i
 								class="material-icons rojo" aria-hidden="true "
 								data-toggle="tooltip " data-placement="top " title="Eliminar"
 								(click)="deleteProduct(item.id)">delete_forever</i></td>
@@ -104,7 +89,8 @@
 			</div>
 			<div class="card-footer">
 				<div class="boton">
-					<button class="botonMaterial" data-toggle="modal" data-target="#exampleModal" (click)="createProduct()">
+					<button class="botonMaterial" data-toggle="modal"
+						data-target="#exampleModal" (click)="createProduct()">
 						<i class="material-icons add">add</i>
 					</button>
 				</div>
