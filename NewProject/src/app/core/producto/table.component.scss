@@ -27,7 +27,7 @@ thead>tr>th {
     height: 56px;
     color: #fff;
 }
-
+// 
 .card-content {
     padding: 15px 20px;
     position: relative;
@@ -36,20 +36,20 @@ thead>tr>th {
     padding-bottom: 0;
     min-height: 25rem;
 }
-
+// 
 .card-title {
     margin-top: 1.5rem;
     text-transform: capitalize;
     margin-bottom: 1.2rem;
     position: relative;
 }
-
+// 
 .orden {
     position: absolute;
     top: 0;
     right: .5rem;
 }
-
+// 
 .orden .btn {
     padding: .655rem;
     border-radius: 50%;
@@ -70,70 +70,80 @@ thead>tr>th {
     left: inherit;
     right: 0px;
 }
-
+// 
 // boton de actualizar
 .actualizar {
     position: absolute;
-    top: 0;
-    left: calc(50% - 56px);
+    top: .65rem;
+    right: 3.5rem;
+   // left: calc(50% - 56px);
+    cursor: pointer;
 }
 
-.updateIcon {
-    cursor: pointer;
-    border-radius: .5rem;
-    padding: .15rem;
-    color: rgba(0, 0, 0, .54);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    font-size: 2rem;
-}
-
-// animacion de el boton de busqueda
-.input-group {
-    display: flex;
-    height: 36px;
-    width: 100%;
-    overflow: hidden;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.nuevo {
     position: absolute;
-    top: .25rem;
-    right: 4rem;
-    width: 25%;
+    top: .65rem;
+    right: 1.5rem;
+   // left: calc(50% - 56px);
+    cursor: pointer;
 }
-
-.inactive:active,
-.inactive:hover {
-    background-color: rgba(100, 100, 100, 0.1);
-}
-
-.input-group .pull-right:active,
-.input-group .pull-right:hover {
-    background-color: transparent;
-}
-
-.input-group.centered {
-    margin: 0 auto;
-}
-
-.input-group .input-group-addon {
-    justify-content: center;
-    width: 36px;
-    background: transparent;
-    border: none;
-    display: flex;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.input-group .input-group-addon i {
-    height: 24px;
-    width: 24px;
-    align-self: center;
-    color: #777;
-}
-
+// 
+// .updateIcon {
+//     cursor: pointer;
+//     border-radius: .5rem;
+//     padding: .15rem;
+//     color: rgba(0, 0, 0, .54);
+//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+//     font-size: 2rem;
+// }
+// 
+// // animacion de el boton de busqueda
+// .input-group {
+//     display: flex;
+//     height: 36px;
+//     width: 100%;
+//     overflow: hidden;
+//     padding: 0;
+//     cursor: pointer;
+//     border-radius: 2px;
+//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+//     position: absolute;
+//     top: .25rem;
+//     right: 4rem;
+//     width: 25%;
+// }
+// 
+// .inactive:active,
+// .inactive:hover {
+//     background-color: rgba(100, 100, 100, 0.1);
+// }
+// 
+// .input-group .pull-right:active,
+// .input-group .pull-right:hover {
+//     background-color: transparent;
+// }
+// 
+// .input-group.centered {
+//     margin: 0 auto;
+// }
+// 
+// .input-group .input-group-addon {
+//     justify-content: center;
+//     width: 36px;
+//     background: transparent;
+//     border: none;
+//     display: flex;
+//     text-align: center;
+//     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+// }
+// 
+// .input-group .input-group-addon i {
+//     height: 24px;
+//     width: 24px;
+//     align-self: center;
+//     color: #777;
+// }
+// 
 .input-group input {
     font-family: "Roboto", sans-serif;
     background: transparent;
@@ -142,27 +152,27 @@ thead>tr>th {
     font-size: 16px;
     padding: 0;
 }
-
+// // 
 .input-group input[type="text"] {
     border-bottom: 2px solid #242424;
 }
-
-// .search .form-control::-webkit-input-placeholder {
-//   color: red;
+// 
+// // .search .form-control::-webkit-input-placeholder {
+// //   color: red;
+// // }
+// .inactive {
+//     width: 36px;
+//     border-radius: 18px;
+//     background: transparent;
+//     box-shadow: none;
 // }
-.inactive {
-    width: 36px;
-    border-radius: 18px;
-    background: transparent;
-    box-shadow: none;
-}
-
-.inactive .input-group-addon:not(:first-child) {
-    opacity: 0;
-}
-
-.row {
-    margin-top: 1em;
-}
-
-// animacin del boton de busqueda
+// 
+// .inactive .input-group-addon:not(:first-child) {
+//     opacity: 0;
+// }
+// 
+// .row {
+//     margin-top: 1em;
+// }
+// 
+// // animacin del boton de busqueda
