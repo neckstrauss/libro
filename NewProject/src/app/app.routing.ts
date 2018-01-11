@@ -23,7 +23,12 @@ const routes: Routes = [
     loadChildren: "./core/producto/producto.module#ProductoModule",
 //    canLoad: [LoadGuard]
   },
-  {path: "", redirectTo: "/product/table", pathMatch: "full"},
+  {
+    path: "productg",
+    loadChildren: "./core/producto-generico/productoGenerico.module#ProductoGenericoModule",
+//    canLoad: [LoadGuard]
+  },
+  {path: "", redirectTo: "/productg/tableg", pathMatch: "full"},
   {path: "**", component: NotFoundComponent}
 ];
 

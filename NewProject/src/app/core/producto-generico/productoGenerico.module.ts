@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {ModelModule} from "../../model/model.module";
-import {TableComponent} from "./../producto/table.component";
-import {FormComponent} from "./../producto/form.component";
+import {TableComponent} from "./table.component";
+import {FormComponent} from "./form.component";
 import {StatePipe} from './../state.pipe';
 import {Subject} from "rxjs/Subject";
 import {MessageModule} from "../../messages/message.module";
@@ -13,9 +13,9 @@ import {Model} from "../../model/repositories/repository.model";
 import { TablaGenericaComponent } from "../directivas/tabla-generica.component";
 import { SharedState, SHARED_STATE } from "../sharedState.model";
 import { TermsGuard } from '../terms.guard';
-import {CategoryCountComponent} from './../producto/categoryCount.component';
+import {CategoryCountComponent} from './categoryCount.component';
 import {NotFoundComponent} from './../notFound.component';
-import {ProductCountComponent} from './../producto/productCount.component';
+import {ProductCountComponent} from './productCount.component';
 import {UnsavedGuard} from './../unsaved.guard';
 import { CounterDirective } from "./counter.directive";
 import {RouterModule, Routes} from "@angular/router";
@@ -48,15 +48,15 @@ let routing = RouterModule.forChild([
     resolve: {model: ModelResolver},
   //    canActivate: [TermsGuard]
   },
-  {path: "table", component: TableComponent, resolve: { model: ModelResolver }},
-  {path: "table/:category", component: TableComponent},
-  {path: "", redirectTo: "/product/table", pathMatch: "full"},
+  {path: "tableg", component: TableComponent, resolve: { model: ModelResolver }},
+  {path: "tableg/:category", component: TableComponent},
+  {path: "", redirectTo: "/productg/tableg", pathMatch: "full"},
   
 ]);
 
 @NgModule({
   imports: [CommonModule, FormsModule, ModelModule, MessageModule, routing, Ng2SearchPipeModule, OrderModule, NgxPaginationModule],
-  declarations: [TableComponent, FormComponent, ProductCountComponent, CategoryCountComponent, CounterDirective],
+  declarations: [TableComponent, FormComponent, ProductCountComponent, CategoryCountComponent, CounterDirective, TablaGenericaComponent],
   exports: [ModelModule, TableComponent, FormComponent],
 //  providers: [UnsavedGuard],
   providers: [{ provide: SHARED_STATE, useValue: new Subject<SharedState>() }]
@@ -75,5 +75,5 @@ let routing = RouterModule.forChild([
 //      }
 //    }]
 })
-export class ProductoModule {}
+export class ProductoGenericoModule {}
 

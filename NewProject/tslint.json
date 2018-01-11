@@ -53,10 +53,6 @@
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
     "radix": true,
-    "semicolon": [
-      true,
-      "always"
-    ],
     "typedef-whitespace": [
       true,
       {
