@@ -1,22 +1,20 @@
-<tabla-generica [model]="getProducts()" titulo="prueba">
+<tabla-generica #tb [model]="this.model" titulo="prueba generica">
 	<ng-template let-item let-i="index">
 		<tr>
-			<th scope="row">{{((this.selectedPage - 1) *
-								this.productsPerPage) + i + 1}}</th>
-							<td style="vertical-align: middle">{{item.id}}</td>
-							<td style="vertical-align: middle">{{item.name}}</td>
-							<td style="vertical-align: middle">{{item.category}}</td>
-							<td style="vertical-align: middle">{{item.price |
-								currency:"USD":"symbol" }}</td>
-							<td class="text-center"><i class="material-icons verde"
-								aria-hidden="true " data-placement="top " title="Editar"
-								data-toggle="modal" data-target="#exampleModal"
-								(click)="editProduct(item.id)">edit</i> <i
-								class="material-icons rojo" aria-hidden="true "
-								data-toggle="tooltip " data-placement="top " title="Eliminar"
-								(click)="deleteProduct(item.id)">delete_forever</i></td>
+			<th scope="row">{{i + 1 + ((tb.selectedPage - 1) * tb.itemsPerPage)}}</th>
+			<td style="vertical-align: middle">{{item.id}}</td>
+			<td style="vertical-align: middle">{{item.name}}</td>
+			<td style="vertical-align: middle">{{item.category}}</td>
+			<td style="vertical-align: middle">{{item.price | currency:"USD":"symbol" }}</td>
+			<td class="text-center">
+				<i class="material-icons verde" aria-hidden="true " data-placement="top " title="Editar"
+					data-toggle="modal" data-target="#modal" 
+						(click)="tb.editItem(item.id)">edit</i> 
+				<i class="material-icons rojo" aria-hidden="true " data-toggle="tooltip " data-placement="top "
+				title="Eliminar" (click)="tb.deleteItem(item.id)">delete_forever</i>
+			</td>
 		</tr>
-	</ng-template>
+	</ng-template> 
 </tabla-generica>
 <div class="row">
 	<div class="col-12 p-t-1">

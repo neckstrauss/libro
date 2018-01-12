@@ -1,4 +1,7 @@
-import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core';
+import { Model } from "../../model/repositories/repository.model";
+import { SHARED_STATE, SharedState, MODES } from "../sharedState.model";
+import {Component, OnInit, Input, TemplateRef, ContentChild, Inject} from '@angular/core';
+import { Observer } from "rxjs/Observer";
 
 @Component({
   selector: 'tabla-generica',
@@ -8,20 +11,23 @@ import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core
 export class TablaGenericaComponent {
 
   @Input('titulo') titulo = 'defaultTitle';
-  @Input('nombreModal') nombreModal = '#exampleModal';
-  @Input('click-crear') clickCrear(){};
-  @Input('click-actualizar') clickActualizar(){};
-  @Input('model') model: any[] = [];
+  @Input('model') model: Model<any>;
   
-   @ContentChild(TemplateRef) public filaTmpl: TemplateRef<Element>;
+  @ContentChild(TemplateRef) public filaTmpl: TemplateRef<Element>;
+  
   
   key: string = 'name'; //set default  
   reverse: boolean = false;
   
-  public productsPerPage = 15;
+  public itemsPerPage = 15;
   public selectedPage = 1;
   
+  constructor(@Inject(SHARED_STATE) private observer: Observer<SharedState>)
+  {}  
   
+  getItems(): any[] {
+    return this.model.getDataSet();
+  }   
 
   sort(key: string) {
     this.key = key;
@@ -29,8 +35,23 @@ export class TablaGenericaComponent {
   }
   
   changePageSize(newSize: number) {
-    this.productsPerPage = Number(newSize);
+    this.itemsPerPage = Number(newSize);
   }
   
+  deleteItem(key: number) {
+    this.model.delete(key);
+  }
+ 
+  editItem(key: number) {
+    this.observer.next(new SharedState(MODES.EDIT, key));
+  }
+  createItem() {
+    this.observer.next(new SharedState(MODES.CREATE));
+  }
+
+  actualizarItems()
+  {
+    this.model.loadDataSet();  
+  }
   
 }

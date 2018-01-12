@@ -10,13 +10,13 @@
 
 				<div class="actualizar">
 					<i class="material-icons azul	 updateIcon"
-						[title]="'Actualizar Datos'" (click)="clickActualizar()">cached</i>
+						[title]="'Actualizar Datos'" (click)="actualizarItems()">cached</i>
 				</div>
 
 				<div class="nuevo">
 					<i class="material-icons verde updateIcon"
 						[title]="'Nuevo Producto'" data-toggle="modal"
-						data-target="nombreModal" (click)="clickCrear()">note_add</i>
+						data-target="#modal" (click)="createItem()">note_add</i>
 				</div> 
 
 				<div class="input-group search pull-right">
@@ -56,8 +56,7 @@
 
 					
 					<tbody>
-						<ng-template ngFor let-item
-							[ngForOf]="model" [ngForTemplate]="filaTmpl"> 
+						<ng-template ngFor  let-item [ngForOf]="getItems() | orderBy: key : reverse | filter:filter | filter:filter2| paginate: { itemsPerPage: itemsPerPage, currentPage: selectedPage}" [ngForTemplate]="filaTmpl">
 							
 						</ng-template>
 					</tbody>
@@ -68,7 +67,7 @@
 			</div>
 			<div class="card-footer">				
 				<div class="form-inline float-left m-r-1">
-					<select class="form-control" [value]="productsPerPage"
+					<select class="form-control" [value]="itemsPerPage"
 						(change)="changePageSize($event.target.value)">
 						<option value="15">15 por Page</option>
 						<option value="30">30 por Page</option>

@@ -76,7 +76,6 @@ export class FormComponent {
 
 
   cambiarProducto(id: number) {
-    this.form.reset();
     if (id != undefined) {
       Object.assign(this.product, this.model.getProduct(id));
       Object.assign(this.originalProduct, this.product);
@@ -90,7 +89,7 @@ export class FormComponent {
       this.originalProduct = this.product;
       //      this.product = new Product();
       form.reset();
-      $("#exampleModal").modal("hide");
+      $("#modal").modal("hide");
 
       //  form.reset(); 
       //  this.router.navigateByUrl("/");
