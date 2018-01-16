@@ -27,7 +27,7 @@ export class Model<T> {
     return this.dataSet;
   }
 
-  getProduct(id: number): T {
+  get(id: number): T {
     return this.dataSet.find(p => this.locator(p, id));
   }
 
@@ -59,7 +59,7 @@ export class Model<T> {
     });
   }
 
-  getNextProductId(id: number): number {
+  getNextId(id: number): number {
     let index = this.dataSet.findIndex(p => this.locator(p, id));
     if (index > -1) {      
       let aux: any = this.dataSet[this.dataSet.length > index + 2 ? index + 1 : 0];
@@ -69,7 +69,7 @@ export class Model<T> {
     }
   }
   
-  getPreviousProductid(id: number): number {
+  getPreviousId(id: number): number {
     let index = this.dataSet.findIndex(p => this.locator(p, id));
     if (index > -1) {
       let aux: any = this.dataSet[index > 0 ? index - 1 : this.dataSet.length - 1];

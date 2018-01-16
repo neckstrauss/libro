@@ -10,7 +10,7 @@ import {MessageService} from "../../messages/message.service";
 import {Message} from "../../messages/message.model";
 import { ModelResolver } from '../../model/model.resolver';
 import {Model} from "../../model/repositories/repository.model";
-import { TablaGenericaComponent } from "../directivas/tabla-generica.component";
+import { TablaGenericaComponent } from "../componentesGenericos/tabla-generica/tabla-generica.component";
 import { SharedState, SHARED_STATE } from "../sharedState.model";
 import { TermsGuard } from '../terms.guard';
 import {CategoryCountComponent} from './../producto/categoryCount.component';

@@ -1,4 +1,4 @@
-<tabla-generica #tb [model]="this.model" titulo="prueba generica">
+<tabla-generica #tb [model]="this.model" [columnas]="this.columnas" titulo="prueba generica">
 	<ng-template let-item let-i="index">
 		<tr>
 			<th scope="row">{{i + 1 + ((tb.selectedPage - 1) * tb.itemsPerPage)}}</th>
@@ -8,7 +8,7 @@
 			<td style="vertical-align: middle">{{item.price | currency:"USD":"symbol" }}</td>
 			<td class="text-center">
 				<i class="material-icons verde" aria-hidden="true " data-placement="top " title="Editar"
-					data-toggle="modal" data-target="#modal" 
+					data-toggle="modal" data-target="#modalForm" 
 						(click)="tb.editItem(item.id)">edit</i> 
 				<i class="material-icons rojo" aria-hidden="true " data-toggle="tooltip " data-placement="top "
 				title="Eliminar" (click)="tb.deleteItem(item.id)">delete_forever</i>
@@ -16,21 +16,8 @@
 		</tr>
 	</ng-template> 
 </tabla-generica>
-<div class="row">
-	<div class="col-12 p-t-1">
-		<button class="btn btn-primary" routerLink="/product/form/create">
-			Create New Product</button>
-		<button class="btn btn-danger" (click)="deleteProduct(-1)">
-			Generate HTTP Error</button>
-		<button class="btn btn-danger" routerLink="/does/not/exist">
-			Generate Routing Error</button>
-		<button class="btn btn-danger" routerLink="/ondemand">Load
-			Module</button>
 
-	</div>
-</div>
-
-<paForm></paForm>
+<modal-form></modal-form>
 
 
 

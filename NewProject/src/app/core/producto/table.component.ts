@@ -39,7 +39,7 @@ export class TableComponent {
   }
 
   getProduct(key: number): Product {
-    return this.model.getProduct(key);
+    return this.model.get(key);
   }
 
   getProducts(): Product[] {

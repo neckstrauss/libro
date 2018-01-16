@@ -1,79 +1,32 @@
+import { ModelModule } from "../../model/model.module";
+import { ModelResolver } from "../../model/model.resolver";
+import { ModalFormGenericoComponent } from "../componentesGenericos/modal-form-generico/modal-form-generico.component";
+import { TablaGenericaComponent } from "../componentesGenericos/tabla-generica/tabla-generica.component";
+import { SHARED_STATE, SharedState } from "../sharedState.model";
+import { FormComponent } from "./form.component";
+import { TableComponent } from "./table.component";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {ModelModule} from "../../model/model.module";
-import {TableComponent} from "./table.component";
-import {FormComponent} from "./form.component";
-import {StatePipe} from './../state.pipe';
-import {Subject} from "rxjs/Subject";
-import {MessageModule} from "../../messages/message.module";
-import {MessageService} from "../../messages/message.service";
-import {Message} from "../../messages/message.model";
-import { ModelResolver } from '../../model/model.resolver';
-import {Model} from "../../model/repositories/repository.model";
-import { TablaGenericaComponent } from "../directivas/tabla-generica.component";
-import { SharedState, SHARED_STATE } from "../sharedState.model";
-import { TermsGuard } from '../terms.guard';
-import {CategoryCountComponent} from './categoryCount.component';
-import {NotFoundComponent} from './../notFound.component';
-import {ProductCountComponent} from './productCount.component';
-import {UnsavedGuard} from './../unsaved.guard';
-import { CounterDirective } from "./counter.directive";
-import {RouterModule, Routes} from "@angular/router";
-
 import {CommonModule} from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderModule } from "ngx-order-pipe";
 import {NgxPaginationModule} from 'ngx-pagination';
-const childRoutes: Routes = [
-  {
-    path: "",
-    canActivateChild: [TermsGuard],
-    children: [{path: "products", component: ProductCountComponent},
-    {path: "categories", component: CategoryCountComponent},
-    {path: "", component: ProductCountComponent}],
-    resolve: {model: ModelResolver}
-  }
-
-];
+import { Subject } from "rxjs/Subject";
 
 let routing = RouterModule.forChild([
-  
-    {
-    path: "form/:mode/:id", component: FormComponent,
-    resolve: {model: ModelResolver},
-    canDeactivate: [UnsavedGuard]
-  },
-  {
-    path: "form/:mode", component: FormComponent,
-    resolve: {model: ModelResolver},
-  //    canActivate: [TermsGuard]
-  },
+    
   {path: "tableg", component: TableComponent, resolve: { model: ModelResolver }},
-  {path: "tableg/:category", component: TableComponent},
   {path: "", redirectTo: "/productg/tableg", pathMatch: "full"},
   
 ]);
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ModelModule, MessageModule, routing, Ng2SearchPipeModule, OrderModule, NgxPaginationModule],
-  declarations: [TableComponent, FormComponent, ProductCountComponent, CategoryCountComponent, CounterDirective, TablaGenericaComponent],
-  exports: [ModelModule, TableComponent, FormComponent],
-//  providers: [UnsavedGuard],
+  imports: [CommonModule, FormsModule, ModelModule, routing, Ng2SearchPipeModule, OrderModule, NgxPaginationModule],
+  declarations: [TableComponent, FormComponent,  TablaGenericaComponent, ModalFormGenericoComponent],
+  exports: [TableComponent, FormComponent],
   providers: [{ provide: SHARED_STATE, useValue: new Subject<SharedState>() }]
 
-//    providers: [{
-//      provide: SHARED_STATE,
-//      deps: [MessageService, Model],
-//      useFactory: (messageService, model) => {
-//        return new Subject<SharedState>();
-//  //      let subject = new Subject<SharedState>();
-//  //      subject.subscribe(m => messageService.reportMessage(
-//  //        new Message(MODES[m.mode] + (m.id != undefined
-//  //          ? ` ${model.getProduct(m.id).name}` : "")))
-//  //      );
-//  //      return subject;
-//      }
-//    }]
 })
 export class ProductoGenericoModule {}
 

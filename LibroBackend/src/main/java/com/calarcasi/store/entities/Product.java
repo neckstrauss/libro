@@ -15,19 +15,19 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = Product.AllProduct, query = "SELECT a FROM Product a ")
-public class Product extends AbsEntity implements Serializable {
+public class Product /*extends AbsEntity*/ implements Serializable {
 
 	public final static String AllProduct = "Product.getAllProducts";
 	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private String name;
 	@Column(name="CATEGORIA")
 	private String category;
 	private String description;
-	private Long price;
+	private double price;
 	private String estado;
 	
 	private static final long serialVersionUID = 1L;
@@ -36,11 +36,11 @@ public class Product extends AbsEntity implements Serializable {
 		super();
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -70,11 +70,11 @@ public class Product extends AbsEntity implements Serializable {
 		this.description = description;
 	}
 
-	public Long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

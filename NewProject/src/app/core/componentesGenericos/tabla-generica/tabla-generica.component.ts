@@ -1,5 +1,5 @@
-import { Model } from "../../model/repositories/repository.model";
-import { SHARED_STATE, SharedState, MODES } from "../sharedState.model";
+import { Model } from "../../../model/repositories/repository.model";
+import { SHARED_STATE, SharedState, MODES } from "../../sharedState.model";
 import {Component, OnInit, Input, TemplateRef, ContentChild, Inject} from '@angular/core';
 import { Observer } from "rxjs/Observer";
 
@@ -12,6 +12,7 @@ export class TablaGenericaComponent {
 
   @Input('titulo') titulo = 'defaultTitle';
   @Input('model') model: Model<any>;
+  @Input('columnas') columnas: any[];
   
   @ContentChild(TemplateRef) public filaTmpl: TemplateRef<Element>;
   

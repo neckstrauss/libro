@@ -11,10 +11,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 declare var $: any;
 
 @Component({
-  selector: "paForm",
+  selector: "modal-form",
   moduleId: module.id,
   templateUrl: "form.component.html",
-  styleUrls: ["form.component.css"]
+  styleUrls: ["form.component.scss"]
 })
 export class FormComponent {
 
@@ -29,9 +29,8 @@ export class FormComponent {
     @Inject(SHARED_STATE) private stateEvents: Observable<SharedState>) {
     stateEvents.subscribe((update) => {
       this.product = new Product();
-
       if (update.id != undefined) {
-        Object.assign(this.product, this.model.getProduct(update.id));
+        Object.assign(this.product, this.model.get(update.id));
         Object.assign(this.originalProduct, this.product);
       } else {
         this.form.reset();
@@ -45,62 +44,21 @@ export class FormComponent {
     return this.categoriaModel.getDataSet();
   }
 
-  //  get editing(): boolean {
-  //    return this.state.mode == MODES.EDIT;
-  //  }
-
-  //  constructor(private model: ProductoModel, activeRoute: ActivatedRoute, private router: Router) {
-  //    activeRoute.params.subscribe(params => {
-  //      this.editing = params["mode"] == "edit";
-  //      let id = params["id"];
-  //      if (id != null) {
-  //        Object.assign(this.product, model.getProduct(id) || new Product());
-  //        Object.assign(this.originalProduct, this.product);
-  //      }
-  //    });
-  //  }
-
-  //  constructor(private model: Model,
-  //    @Inject(SHARED_STATE) private stateEvents: Observable<SharedState>) {
-  //
-  //    stateEvents
-  //      .subscribe(update => {
-  //        this.product = new Product();
-  //        if (update.id != undefined) {
-  //          Object.assign(this.product, this.model.getProduct(update.id));
-  //        }
-  //        this.editing = update.mode == MODES.EDIT;
-  //      });
-  // }
-
-
-
   cambiarProducto(id: number) {
-    this.form.reset();
     if (id != undefined) {
-      Object.assign(this.product, this.model.getProduct(id));
+      Object.assign(this.product, this.model.get(id));
       Object.assign(this.originalProduct, this.product);
     }
   }
 
   submitForm(form: NgForm) {
-
     if (form.valid) {
       this.model.save(this.product);
       this.originalProduct = this.product;
-      //      this.product = new Product();
       form.reset();
-      $("#exampleModal").modal("hide");
-
-      //  form.reset(); 
-      //  this.router.navigateByUrl("/");
-
+      $("#modalForm").modal("hide");
     }
-  }
-
-  resetForm() {
-    this.product = new Product();
-  }
+  }  
 
 }
 

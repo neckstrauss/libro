@@ -1,103 +1,72 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="modalForm" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h2 class="modal-title" id="exampleModalLabel">{{editing ?
-					"Edit" : "Create"}} Product</h2>
-				<button type="button" class="close" data-dismiss="modal"
+			<div class="modal-body">
+				<!-- <button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-
-				<form novalidate #form="ngForm" (submit)="submitForm(form)">
-
-					<div class="form-group ">
-						<label class="control-label" for="input">Name<span
-							class="required">*</span>
-						</label> <input class="form-control form-control-sm" name="name"
-							type="text" [(ngModel)]="product.name" required="required"
-							required />
-
+				</button> -->
+				<div class="card">
+					<div class="card-header">
+						<i class="material-icons icon-title">assignment</i>
 					</div>
-					<div class="form-group">
-						<label>Category</label> <select class="form-control form-control-sm custom-select" name="category" [(ngModel)]="product.category" required>
-							<option *ngFor="let item of categorias" value="{{item.nombre}}">
-							{{item.nombre}}
-							</option>
-							
-						</select> 
+					<div class="card-title">
+						<h2>{{editing ? "Editar" : "Crear"}} Producto</h2>
 					</div>
-					<div class="form-group">
-						<label>Price</label>
-						<div class="form-group">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">$</span>
-								</div>
-								<input class="form-control form-control-sm" name="price"
-									[(ngModel)]="product.price" required pattern="^[0-9\.]+$"
-									aria-label="Amount (to the nearest dollar)">
+					<div class="card-content">
+						<form novalidate #form="ngForm" (submit)="submitForm(form)">
+
+							<div class="form-group ">
+								<label class="control-label" for="input">Name<span
+									class="required">*</span>
+								</label> <input class="form-control " name="name" type="text"
+									[(ngModel)]="product.name" required="required" required />
 
 							</div>
-						</div>
+							<div class="form-group">
+								<label>Category</label> <select
+									class="form-control  custom-select" name="category"
+									[(ngModel)]="product.category" required>
+									<option *ngFor="let item of categorias" value="{{item.nombre}}">
+										{{item.nombre}}</option>
 
-
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Price</label>
+								<div class="form-group">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text">$</span>
+										</div>
+										<input class="form-control" name="price"
+											[(ngModel)]="product.price" required pattern="^[0-9\.]+$"
+											aria-label="Amount (to the nearest dollar)">
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-
-				</form>
-			</div>
-			<div class="modal-footer">
-				<!-- <div  class="p-t-1"> -->
-				<div *ngIf="editing" class="btn-group float-left">
-					<button class="btn btn-secondary"
-						(click)="cambiarProducto(model.getPreviousProductid(product.id))">
-						Previous</button>
-					<button class="btn btn-secondary"
-						(click)="cambiarProducto(model.getNextProductId(product.id))">
-						Next</button>
+					<div class="card-footer">
+						<div *ngIf="editing" class="btn-group float-left">
+							<button class="btn btn-secondary"
+								(click)="cambiarProducto(model.getPreviousProductid(product.id))">
+								Previous</button>
+							<button class="btn btn-secondary"
+								(click)="cambiarProducto(model.getNextProductId(product.id))">
+								Next</button>
+						</div>
+						<button type="button" class="btn btn-primary"
+							(click)="submitForm(form)" [class.btn-warning]="editing"
+							[disabled]="form.invalid">{{editing ? "Save" :
+							"Create"}}</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancel</button>
+					</div>
 				</div>
-				<button type="button" class="btn btn-primary"
-					(click)="submitForm(form)" [class.btn-warning]="editing"
-					[disabled]="form.invalid">{{editing ? "Save" : "Create"}}</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- <div class="bg-primary p-a-1" [class.bg-warning]="editing">
-	<h5>{{editing ? "Edit" : "Create"}} Product</h5>
-	 Last Event: {{ stateEvents | async | formatState }}
-</div>
-<div *ngIf="editing" class="p-t-1">
-	<button class="btn btn-secondary"
-		[routerLink]="['/product/form', 'edit', model.getPreviousProductid(product.id)]">
-		Previous</button>
-	<button class="btn btn-secondary"
-		[routerLink]="['/product/form', 'edit', model.getNextProductId(product.id)]">
-		Next</button>
-</div>
-<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)"
-	(reset)="resetForm()">
-<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
-	<div class="form-group">
-		<label>Name</label> <input class="form-control" name="name"
-			[(ngModel)]="product.name" required />
-	</div>
-	<div class="form-group">
-		<label>Category</label> <input class="form-control" name="category"
-			[(ngModel)]="product.category" required />
-	</div>
-	<div class="form-group">
-		<label>Price</label> <input class="form-control" name="price"
-			[(ngModel)]="product.price" required pattern="^[0-9\.]+$" />
-	</div>
-	<button type="submit" class="btn btn-primary"
-		[class.btn-warning]="editing" [disabled]="form.invalid">
-		{{editing ? "Save" : "Create"}}</button>
-	<button type="button" class="btn btn-secondary" routerLink="/">Cancel</button>
-</form> -->
