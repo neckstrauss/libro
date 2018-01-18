@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
-import {ProductoModel} from '../../model/repositories/producto.repository.model';
+import { Component } from "@angular/core";
+import { ProductoModel } from '../../model/repositories/producto.repository.model';
+import { ExcelService } from "../producto/excel.service";
 
 
 @Component({
@@ -10,14 +11,20 @@ import {ProductoModel} from '../../model/repositories/producto.repository.model'
 })
 export class TableComponent {
 
-  constructor(private model: ProductoModel) {} 
-  
-  columnas: any[] = [ {nombre: '#'}, 
-                      {nombre: 'ID', key: 'id'},
-                      {nombre: 'Nombre', key: 'name'},
-                      {nombre: 'Categoria', key: 'category'},
-                      {nombre: 'Precio', key: 'price'},
-                      {nombre: ''}
-                    ];
+  constructor(private model: ProductoModel, private excelService: ExcelService) {
+    // this.excelService = excelService;
+    // this.model = PERSONS;
+  }
 
+  columnas: any[] = [{ nombre: '#' },
+  { nombre: 'ID', key: 'id' },
+  { nombre: 'Nombre', key: 'name' },
+  { nombre: 'Categoria', key: 'category' },
+  { nombre: 'Precio', key: 'price' },
+  { nombre: '' }
+  ];
+
+  exportToExcel(event) {
+    this.excelService.exportAsExcelFile(this.model.getDataSet(), 'Products');
+  }
 }

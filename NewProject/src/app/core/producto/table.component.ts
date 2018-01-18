@@ -1,10 +1,11 @@
-import {Component, Inject} from "@angular/core";
-import {Product} from "../../model/entities/product.model";
-import {ProductoModel} from '../../model/repositories/producto.repository.model';
-import {Model} from "../../model/repositories/repository.model";
-import {SharedState, MODES, SHARED_STATE} from "../sharedState.model";
-import {ActivatedRoute} from "@angular/router";
+import { Component, Inject } from "@angular/core";
+import { Product } from "../../model/entities/product.model";
+import { ProductoModel } from '../../model/repositories/producto.repository.model';
+import { Model } from "../../model/repositories/repository.model";
+import { SharedState, MODES, SHARED_STATE } from "../sharedState.model";
+import { ActivatedRoute } from "@angular/router";
 import { Observer } from "rxjs/Observer";
+import { ExcelService } from "./excel.service";
 
 
 @Component({
@@ -24,15 +25,19 @@ export class TableComponent {
 
 
   constructor(private model: ProductoModel, activeRoute: ActivatedRoute,
-  @Inject(SHARED_STATE) private observer: Observer<SharedState>) {
+    @Inject(SHARED_STATE) private observer: Observer<SharedState>) {
 
     activeRoute.params.subscribe(params => {
       this.category = params["category"] || null;
     });
+    // this.excelService = excelService;
+    // this.model = PERSONS;
   }
 
 
-
+  // exportToExcel(event) {
+  //   this.excelService.exportAsExcelFile(this.model.getDataSet(), 'Products');
+  // }
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
@@ -73,11 +78,10 @@ export class TableComponent {
     this.observer.next(new SharedState(MODES.CREATE));
   }
 
-  actualizarProductos()
-  {
-    this.model.loadDataSet();  
+  actualizarProductos() {
+    this.model.loadDataSet();
   }
-  
+
 
 
 

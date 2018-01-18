@@ -15,6 +15,10 @@
 						[title]="'Nuevo Registro'" data-toggle="modal"
 						data-target="#modalForm" (click)="createItem()">note_add</i>
 				</div>
+				<div class="divExcel">
+					<img class="imgExcel" [title]="'Exportar a excel'" (click)="exportToExcel()" src="../assets/icon-excel.svg">
+					<!-- <button (click)="exportToExcel()" class="btn btn-primary">Export to excel</button> -->
+				</div>
 				<div class="input-group search pull-right">
 					<span class="input-group-addon"> <i class="material-icons">search</i>
 					</span> <input type="text" class="form-control" placeholder="Filtro 1"

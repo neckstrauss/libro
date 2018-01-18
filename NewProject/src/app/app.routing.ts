@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: "./core/producto-generico/productoGenerico.module#ProductoGenericoModule",
 //    canLoad: [LoadGuard]
   },
+  {
+    path: "categoria",
+    loadChildren: "./core/categoria/categoria.module#CategoriaModule",
+  },
   {path: "", redirectTo: "/productg/tableg", pathMatch: "full"},
   {path: "**", component: NotFoundComponent}
 ];

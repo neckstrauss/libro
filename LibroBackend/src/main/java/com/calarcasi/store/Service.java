@@ -113,6 +113,19 @@ public class Service {
 		return new ProductPojo().create(product);
 	}
 
+	@ApiMethod(name = "saveCategorias", path = "categorias", httpMethod = HttpMethod.POST
+//			, authenticators = {
+//			GoogleOAuth2Authenticator.class, EspAuthenticator.class }, issuerAudiences = {
+//					@ApiIssuerAudience(name = "firebase", audiences = { "prueba2-1" }) }
+	)
+	public Categoria saveCategoria(/*final User user, */Categoria categoria) throws UnauthorizedException {
+//		if (user == null) {
+//			throw new UnauthorizedException("Invalid credentials");
+//		}
+		
+		return new CategoriaPojo().create(categoria);
+	}
+	
 	@ApiMethod(name = "deleteProduct", path = "products/{id}", httpMethod = HttpMethod.DELETE
 //			, authenticators = {
 //			GoogleOAuth2Authenticator.class, EspAuthenticator.class }, issuerAudiences = {
@@ -123,6 +136,18 @@ public class Service {
 //			throw new UnauthorizedException("Invalid credentials");
 //		}
 		new ProductPojo().delete(id);
+	}
+	
+	@ApiMethod(name = "deleteCategoria", path = "categorias/{id}", httpMethod = HttpMethod.DELETE
+//			, authenticators = {
+//			GoogleOAuth2Authenticator.class, EspAuthenticator.class }, issuerAudiences = {
+//					@ApiIssuerAudience(name = "firebase", audiences = { "prueba2-1" }) }
+	)
+	public void deleteCategoria(/*final User user,*/ @Named("id") final Long id) throws UnauthorizedException {
+//		if (user == null) {
+//			throw new UnauthorizedException("Invalid credentials");
+//		}
+		new CategoriaPojo().delete(id);
 	}
 
 	@ApiMethod(name = "updateProduct", path = "products/{id}", httpMethod = HttpMethod.PUT
@@ -136,6 +161,18 @@ public class Service {
 //		}
 		System.out.println(product);
 		return new ProductPojo().update(product);
+	}	
+	
+	@ApiMethod(name = "updateCategoria", path = "categorias/{id}", httpMethod = HttpMethod.PUT
+//			, authenticators = {
+//			GoogleOAuth2Authenticator.class, EspAuthenticator.class }, issuerAudiences = {
+//					@ApiIssuerAudience(name = "firebase", audiences = { "prueba2-1" }) }
+	)
+	public Categoria updateCategoria(/*final User user,*/ Categoria categoria) throws UnauthorizedException {
+//		if (user == null) {
+//			throw new UnauthorizedException("Invalid credentials");
+//		}
+		return new CategoriaPojo().update(categoria);
 	}	
 	/*
 	 * FIN gestion productos

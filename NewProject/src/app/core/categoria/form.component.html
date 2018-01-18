@@ -1,0 +1,15 @@
+<modal-form-generico #md [model]="this.model" titulo="Categoria">
+  <div card-body>
+
+    <div class="form-group ">
+      <label class="control-label" for="input">Nombre
+        <span class="required">*</span>
+      </label>
+      <input class="form-control " name="nombre" type="text" [(ngModel)]="md.object.nombre" required="required" required />
+
+    </div>
+  </div>
+  <div card-footer>
+
+  </div>
+</modal-form-generico>
